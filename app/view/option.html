@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block navigation %}
+    {% for category in nav %}
+        <a href="{{ category.Name }}"><p>{{ category.Title }}</p></a> 
+            <ul>
+                {% for option in category.Option %}
+                <a href="{{category.Name}}#{{ option.Title }}"><li>{{ option.Title }}</li></a>
+                {% endfor %}
+            </ul>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for option in results %}
+            <li id="{{ option.Title }}">{{ option.Title }}</li>
+            <ol>
+                {% for card in option.Card %}
+                <a href=""><li>{{ card.Title }}</li></a>
+                <ul>
+                    <li>{{ card.ImageUrl }}</li>
+                    <li>{{ card.Describe }}</li>
+                </ul>
+                {% endfor %}
+            </ol>
+        {% endfor %}
+    </ul>
+{% endblock %}
