@@ -1,14 +1,4 @@
 {% extends "layout.html" %}
-{% block navigation %}
-    {% for category in nav %}
-        <a href="{{ category.Name }}"><p>{{ category.Title }}</p></a> 
-            <ul>
-                {% for option in category.Option %}
-                    <a href="{{category.Name}}#{{ option.Title }}"><li>{{ option.Title }}</li></a> 
-                {% endfor %}
-            </ul>
-    {% endfor %}
-{% endblock %}
 
 {% block content %}
     {% for category in results %}
@@ -22,10 +12,42 @@
                         <ul>
                             <li>{{ card.ImageUrl }}</li>
                             <li>{{ card.Describe }}</li>
+                            <li>{{ card.Url }}</li>
                         </ul>
                         {% endfor %}
+                        <li><button class="cardBtn btn" data-toggle="modal" data-target="#cardForm" data-cardid="{{ option.Card_id }}">添加选项</button></li>
                     </ol>
                 {% endfor %}
             </ul>
     {% endfor %}
+
+    <div class="modal fade" id="cardForm">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form action="/add/card" method="post" role="form" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" name="cardid" id="cardid"> 
+                    <div class="form-group">
+                        <label>Title:</label>
+                        <input type="text" class="form-control" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label>Describe:</label>
+                        <input type="text" class="form-control" name="describe">
+                    </div>
+                    <div class="form-group">
+                        <label>Url:</label>
+                        <input type="text" class="form-control" name="url">
+                    </div>
+                    <div class="form-group">
+                        <label>Image:</label>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-default">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
