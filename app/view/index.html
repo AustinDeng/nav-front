@@ -15,7 +15,7 @@
                             <li>{{ card.Url }}</li>
                         </ul>
                         {% endfor %}
-                        <li><button class="cardBtn btn" data-toggle="modal" data-target="#cardForm" data-cardid="{{ option.Card_id }}">添加选项</button></li>
+                        <li><button class="cardBtn btn" data-toggle="modal" data-target="#cardForm" data-optionid="{{ option.Option_id }}">添加选项</button></li>
                     </ol>
                 {% endfor %}
             </ul>
@@ -24,8 +24,8 @@
     <div class="modal fade" id="cardForm">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form action="/add/card" method="post" role="form" enctype="multipart/form-data">
-                    <input type="hidden" class="form-control" name="cardid" id="cardid"> 
+                <form action="/add/card?_csrf={{ ctx.csrf | safe }}" method="post" role="form" enctype="multipart/form-data">
+                    <input type="hidden" class="form-control" name="option_id" id="cardid"> 
                     <div class="form-group">
                         <label>Title:</label>
                         <input type="text" class="form-control" name="title">

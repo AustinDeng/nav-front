@@ -7,7 +7,7 @@ $(function() {
     
     $('.cardBtn').click(function (e) {
         var target = $(e.target)
-        var cardid = target.data('cardid')
-        $('#cardid').attr('value', cardid)
+        var optionid = target.data('optionid')
+        $('#cardid').attr('value', optionid)
     })
 })
