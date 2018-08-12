@@ -1,10 +1,4 @@
 module.exports = app => {
-    app.beforeStart(async () => {
-        // app.allDetails = await app.curl('127.0.0.1:8080/api/all', {
-        //     method: 'get',
-        //     dataType: 'json'
-        // })
-
-        // console.log(app.allDetails)
-    })
+    // 给每次请求设置 setLocals 中间件
+    app.config.coreMiddleware.unshift('setLocals');
 }

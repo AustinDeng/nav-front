@@ -1,6 +1,7 @@
 const Service = require('egg').Service
 
 class GetNav extends Service {
+    // 获取导航的数据
     async getnav() {
         const nav = await this.app.curl(this.app.config.BASEURL + '/all', {
             dataType: 'json',

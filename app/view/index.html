@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <!-- 面包屑导航 -->
+    {% if username %}
+        <p class="navbar-text">
+            <span>Welcome, {{ username }}</span>
+            <span>&nbsp;|&nbsp</span>
+            <a class="navbar-link" href="/user/loginout">Logout</a>
+        </p>
+    {% endif %}
+    
+    <!-- 所有的数据都显示在这里 -->
     {% for category in results %}
         <a href="#"><p>{{ category.Title }}</p></a> 
             <ul>
@@ -21,6 +31,7 @@
             </ul>
     {% endfor %}
 
+    <!-- card 表单的模态框 -->
     <div class="modal fade" id="cardForm">
         <div class="modal-dialog">
             <div class="modal-content">

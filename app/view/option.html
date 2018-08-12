@@ -1,12 +1,13 @@
 {% extends "layout.html" %}
 
+<!-- 指定某一个 category 下的所有内容 -->
 {% block content %}
     <ul>
         {% for option in results %}
             <li id="{{ option.Title }}">{{ option.Title }}</li>
             <ol>
                 {% for card in option.Card %}
-                <a href=""><li>{{ card.Title }}</li></a>
+                <a href="{{ card.Url }}"><li>{{ card.Title }}</li></a>
                 <ul>
                     <li>{{ card.ImageUrl }}</li>
                     <li>{{ card.Describe }}</li>
