@@ -1,0 +1,27 @@
+@import url(./layui.css);
+
+body {
+    background-image: url(/public/image/Bing02.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.layui-form-item {
+    margin-top: 50px; 
+    margin-left: 20px;
+    margin-right: 20px; 
+}
+
+.login-box {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 30%;
+    height: 40%;
+}

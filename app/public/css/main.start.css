@@ -1,11 +1,11 @@
-@import url(./layui.css);
+/* @import url(./layui.css); */
 @import url(./bootstrap.min.css);
 div {
     display: block;
     float: left;
     margin: 15px;
     padding: 8px
-} 
+}
 
 div#navigation {
     max-width: 25%;

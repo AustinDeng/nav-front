@@ -1,5 +1,22 @@
 {% extends "layout.html" %}
 
+{% block navigation %}
+    <ul class="nav nav-stacked nav-title">
+        {% for category in nav %}
+        <li class="layui-nav-item">
+            <a href="{{ category.Name }}">{{ category.Title }}</a>
+            <ul class="sub-menu scroll">
+                {% for option in category.Option %}
+                <li>
+                    <a href="{{category.Name}}#{{ option.Title }}">{{ option.Title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock%}
+
 <!-- 指定某一个 category 下的所有内容 -->
 {% block content %}
     <ul>
