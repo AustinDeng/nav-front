@@ -22,7 +22,6 @@ class User extends Controller {
         const result = await this.ctx.service.user.loginin(data)
         // 校验密码是否正确
         const checked = await this.ctx.compare(body.password, result.data.Message)
-        
         if (checked) {
             console.log("登录成功")
             ctx.session.username = data.username
