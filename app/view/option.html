@@ -1,37 +1,115 @@
 {% extends "layout.html" %}
 
 {% block navigation %}
-    <ul class="nav nav-stacked nav-title">
+<div class="sidebar-menu-inner">
+    <header class="logo-env">
+        <!-- logo -->
+        <div class="logo">
+            <a href="index.html" class="logo-expanded">
+                <img src="/public/images/logo.png" width="100%" alt="" />
+            </a>
+
+            <a href="index.html" class="logo-collapsed">
+                <img src="/public/images/logo-collapsed@2x.png" width="40" alt="" />
+            </a>
+        </div>
+        <div class="mobile-menu-toggle visible-xs">
+            <a href="#" data-toggle="user-info-menu">
+                <i class="linecons-cog"></i>
+            </a>
+            <a href="#" data-toggle="mobile-menu">
+                <i class="fa-bars"></i>
+            </a>
+        </div>
+    </header>
+    <ul class="nav nav-stacked nav-title main-menu" id="main-menu">
         {% for category in nav %}
         <li class="layui-nav-item">
-            <a href="{{ category.Name }}">{{ category.Title }}</a>
+            <a href="{{ category.Name }}">
+                <!-- <i class="linecons-star"></i> -->
+                <span class="title">{{ category.Title }}</span></a>
             <ul class="sub-menu scroll">
                 {% for option in category.Option %}
                 <li>
-                    <a href="{{category.Name}}#{{ option.Title }}">{{ option.Title }}</a>
+                    <a href="{{category.Name}}#{{ option.Title }}">
+
+                        <span class="title">{{ option.Title }}</span>
+                    </a>
                 </li>
                 {% endfor %}
+
             </ul>
         </li>
         {% endfor %}
     </ul>
+</div>
 {% endblock%}
 
 <!-- 指定某一个 category 下的所有内容 -->
 {% block content %}
-    <ul>
-        {% for option in results %}
-            <li id="{{ option.Title }}">{{ option.Title }}</li>
-            <ol>
-                {% for card in option.Card %}
-                <a href="{{ card.Url }}"><li>{{ card.Title }}</li></a>
-                <ul>
-                    <li>{{ card.ImageUrl }}</li>
-                    <li>{{ card.Describe }}</li>
-                    <li>{{ card.Url }}</li>
+<nav class="navbar user-info-navbar" role="navigation">
+    <!-- User Info, Notifications and Menu Bar -->
+    <!-- Left links for user info navbar -->
+    <ul class="user-info-menu left-links list-inline list-unstyled">
+        <!-- <li class="hidden-sm hidden-xs">
+            <a href="#" data-toggle="sidebar">
+                <i class="fa-bars"></i>
+            </a>
+        </li> -->
+        <li>
+            <!-- 面包屑导航 -->
+            {% if username %}
+            <p class="navbar-text">
+                <span>Welcome, {{ username }}</span>
+                <span>&nbsp;|&nbsp</span>
+                <a class="navbar-link" href="/user/loginout">Logout</a>
+            </p>
+            {% endif %}
+        </li>
+        <!-- <li class="dropdown hover-line language-switcher">
+                <a href="../cn/index.html" class="dropdown-toggle" data-toggle="dropdown">
+                    <img src="../public/images/flags/flag-cn.png" alt="flag-cn" /> Chinese
+                </a>
+                <ul class="dropdown-menu languages">
+                    <li>
+                        <a href="../en/index.html">
+                            <img src="../public/images/flags/flag-us.png" alt="flag-us" /> English
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="../cn/index.html">
+                            <img src="../public/images/flags/flag-cn.png" alt="flag-cn" /> Chinese
+                        </a>
+                    </li>
                 </ul>
-                {% endfor %}
-            </ol>
-        {% endfor %}
+            </li> -->
     </ul>
+</nav>
+
+<ul>
+    {% for option in results %}
+    <h4 class="text-gray"><i class="linecons-tag" style="margin-right: 7px;" id="{{ option.Title }}"></i>{{option.Title
+        }}</h4>
+    <div class="row">
+        {% for card in option.Card %}
+        <div class="col-sm-3">
+            <div class="xe-widget xe-conversations box2 label-info" onclick="{window.location.href='{{ card.Url }}'}"
+                data-toggle="tooltip" data-placement="bottom" title="" data-original-title="{{ card.Url }}">
+                <div class="xe-comment-entry">
+                    <a class="xe-user-img">
+                        <img src="{{ card.ImageUrl }}" class="img-circle" width="40">
+                    </a>
+                    <div class="xe-comment">
+                        <a href="#" class="xe-user-name overflowClip_1">
+                            <strong>{{ card.Title }}</strong>
+                        </a>
+                        <p class="overflowClip_2">{{ card.Describe }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</ul>
 {% endblock %}

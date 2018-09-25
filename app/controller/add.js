@@ -27,7 +27,7 @@ class Add extends Controller {
         // 得到上传的文件流
         const stream = await ctx.getFileStream();
         // 设置存储的目录地址
-        const target = path.join(this.config.baseDir, 'app/public/uploads', stream.filename);
+        const target = path.join(this.config.baseDir, 'app/public/uploads/img', stream.filename);
         //生成一个文件写入的文件流
         const writeStream = fs.createWriteStream(target); 
         try {
@@ -39,10 +39,11 @@ class Add extends Controller {
         throw err;
         }
         // 拼接图片地址
-        const imageurl = '127.0.0.1:7001' + '/public/uploads/' + stream.filename
+        const imageurl = 'http://127.0.0.1:7001' + '/public/uploads/img/' + stream.filename
         // 拼接数据
         let data = stream.fields
         data.imageurl = imageurl
+        data.url = 'http://' + data.url
         // 将数据添加到数据库中
         const result = await this.ctx.service.add.addCard(data)
         this.ctx.redirect('/')

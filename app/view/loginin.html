@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,23 +8,26 @@
     <link rel="stylesheet" href="/public/css/reset.css">
     <link rel="stylesheet" href="/public/css/loginin.css">
     <title>Login In</title>
-</head>     
+</head>
+
 <body>
-    <div class="layui-fluid login-box">       
+    <div class="layui-fluid login-box">
         <!-- 后台登录表单 -->
         <form action="/user/loginin" method="post" class="layui-form layui-form-pane">
 
             <div class="layui-form-item" pane>
                 <label class="layui-form-label">User Name:</label>
                 <div class="layui-input-block">
-                    <input type="text" name="username" required  lay-verify="required" placeholder="请输入用户名" autocomplete="off" class="layui-input">
+                    <input type="text" name="username" required lay-verify="required" placeholder="请输入用户名" autocomplete="off"
+                        class="layui-input">
                 </div>
             </div>
 
             <div class="layui-form-item" pane>
                 <label class="layui-form-label">Password:</label>
                 <div class="layui-input-block">
-                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
+                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码"
+                        autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
@@ -32,7 +36,8 @@
                     <button type="reset" class="layui-btn layui-btn-primary">Reset</button>
                 </div>
             </div>
-        </form>       
-    </div>  
+        </form>
+    </div>
 </body>
+
 </html>
