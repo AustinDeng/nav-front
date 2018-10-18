@@ -3,7 +3,7 @@ module.exports = () => {
     return async function logininCheck(ctx, next) {
         const username = ctx.session.username
         if (!username) {
-            ctx.redirect('/frontend')
+            ctx.redirect('/campus')
         } else {
             await next()
         }
